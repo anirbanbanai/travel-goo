@@ -8,7 +8,7 @@ import { BsCalendar2Minus } from 'react-icons/bs';
 
 const Trending = () => {
     return (
-        <div className='m-5 p-5 explore'>
+        <div className=' p-5 explore'>
             <h1 className='text-4xl font-bold text-start'>Trending </h1>
             <p className='text-xl'>All trending travel place in the world.</p>
             <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-5'>
