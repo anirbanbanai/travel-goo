@@ -1,5 +1,6 @@
 import Explore from '@/components/Explore';
 import MainHome from '@/components/MainHome';
+import Trending from '@/components/Trending';
 import React from 'react';
 
 const page = () => {
@@ -7,6 +8,7 @@ const page = () => {
         <div>
             <MainHome />
             <Explore/>
+            <Trending/>
         </div>
     );
 };
