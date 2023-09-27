@@ -32,11 +32,11 @@ const MainHome = () => {
 
             </Swiper>
             <div className='w-2/4 backdrop-blur-xl  filter  absolute top-1/3 z-20 ml-5 p-4 text-white'>
-                     <strong className='text-white'>Explore the world</strong>  
-                     <h1 className='text-3xl font-bold'>It is Big world out there,Go explore</h1>
-                     <p className='text-sm'>
-I believe you meant "travel quota." A travel quota typically refers to a limitation or allocation of resources, such as the number of people allowed to travel to a particular destination or the amount of money allocated for travel expenses.</p>
-                     <button className='btn btn-warning hover:bg-white mt-3'>Explore now</button>
+                <strong className='text-white'>Explore the world</strong>
+                <h1 className='text-3xl md:text-4xl font-bold'>It is Big world out there,Go explore</h1>
+                <p className='text-sm'>
+                    I believe you meant "travel quota." A travel quota typically refers to a limitation or allocation of resources.</p>
+                <button className='btn btn-warning hover:bg-white mt-3'>Explore now</button>
             </div>
             {/* <div className='absolute top-2/4 z-50 p-3 text-white  w-2/4'>
                 <h2 className='font-bold text-xl'>Explore the world</h2>
