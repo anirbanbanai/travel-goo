@@ -1,4 +1,5 @@
 'use client'
+import Btnn from '@/components/Btnn';
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -69,8 +70,8 @@ const createPage = () => {
                 <div className="mt-5 flex justify-center">
                     <input {...register("image", { required: true })} type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs" />
                 </div>
-                <div className="flex justify-center">
-                    <button className='btn btn-warning mt-4 hover:bg-red-500'>Create</button>
+                <div className="flex justify-center mt-3">
+                    <Btnn>Create</Btnn>
                 </div>
             </form>
         </div>
