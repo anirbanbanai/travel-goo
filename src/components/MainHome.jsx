@@ -8,7 +8,9 @@ import 'swiper/css/navigation';
 import Image from 'next/image';
 import img12 from '@/assets/pic1.jpg'
 import img2 from '@/assets/pic2.jpg'
-
+import img3 from '@/assets/pic3.jpg'
+import img4 from '@/assets/pic4.jpg'
+import img5 from '@/assets/pic5.jpg'
 
 const MainHome = () => {
     return (
@@ -28,6 +30,15 @@ const MainHome = () => {
                 </SwiperSlide>
                 <SwiperSlide>
                     <Image className='w-full h-[100vh]' src={img2} alt='img' />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Image className='w-full h-[80vh] md:h-[100vh]' src={img3} alt='img' />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Image className='w-full h-[100vh]' src={img4} alt='img' />
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Image className='w-full h-[100vh]' src={img5} alt='img' />
                 </SwiperSlide>
 
             </Swiper>

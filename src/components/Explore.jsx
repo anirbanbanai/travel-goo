@@ -1,8 +1,9 @@
 'use client'
 import { FaLocationArrow } from 'react-icons/fa';
 import { FcSearch } from 'react-icons/fc';
-import { BsCalendarCheck, BsPeopleFill } from 'react-icons/bs';
+import { BsCalendarCheck, BsPeopleFill,BsSearch } from 'react-icons/bs';
 import { useForm } from 'react-hook-form';
+import Btnn from './Btnn';
 
 const Explore = () => {
     const { register, handleSubmit } = useForm()
@@ -57,7 +58,8 @@ const Explore = () => {
 
                     </div>
                     <div className='flex justify-center mt-4'>
-                        <button className='btn btn-warning hover:bg-white'>Search <FcSearch className='text-3xl' /></button>
+                        
+                        <Btnn className="bg-slate-200"><BsSearch className='text-3xl text-white' /></Btnn>
                     </div>
                 </form>
             </div>
