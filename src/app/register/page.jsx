@@ -2,21 +2,79 @@
 import { AuthContext } from '@/components/AuthContext';
 import Btnn from '@/components/Btnn';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
+
+const img_hosting_token = process.env.NEXT_PUBLIC_img_Upload_Token;
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useContext(AuthContext);
+    const {user, createUser, updateUserProfile } = useContext(AuthContext);
+    // console.log(user);
+    const router = useRouter()
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = (data) =>{
-        createUser(data.email , data.password)
-        .then(data=>{
-            console.log(data);
-        })
+
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
+   
+    
+
+    const onSubmit = (data) => {
+        const formData = new FormData;
+        formData.append("image", data.photo[0])
+        fetch(img_hosting_url, {
+            method: "POST",
+            body: formData
+        }).then(res => res.json())
+            .then(imgres => {
+                if (imgres.success) {
+                    const imgURL = imgres.data.display_url;
+                    const { name, email } = data;
+                    const allItem = { name, email, imgURL }
+                    updateUserProfile(data.name, imgURL)
+                        .then(data => {
+                            // console.log("use update", data);
+                        });
+                    // axios.post("/all", allItem)
+                    //     .then(res => {
+                    //         if (res.data.acknowledged === true) {
+                    //             router.push("/")
+                    //             Swal.fire({
+                    //                 position: 'top',
+                    //                 icon: 'success',
+                    //                 title: 'User created successfully',
+                    //                 showConfirmButton: false,
+                    //                 timer: 1500
+                    //             })
+                    //         }
+                    //     })
+                    //     .catch(error => {
+                    //         console.log(error.message);
+                    //     })
+
+                }
+            })
+
+        createUser(data.email, data.password)
+            // createJWT(data.email)
+            .then(data => {
+
+                Swal.fire({
+                    position: 'top',
+                    icon: 'success',
+                    title: 'User Login successfully',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                // router.push("/")
+
+            })
+
+
     }
     return (
         <div>
-         <form onSubmit={handleSubmit(onSubmit)} className="w-[90%] md:w-2/4 mx-auto nnn3 p-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-[90%] md:w-2/4 mx-auto nnn3 p-10">
                 <div className="md:flex gap-4">
                     <div className="form-control w-full ">
                         <label className="label">
@@ -54,7 +112,7 @@ const Register = () => {
 
                 </div>
                 <div>
-                    <input {...register("photo", { required: true })} type="file" className="mt-5 file-input file-input-bordered file-input-warning w-full " />
+                    <input {...register("photo")} type="file" className="mt-5 file-input file-input-bordered file-input-warning w-full " />
                 </div>
 
                 <div className="flex items-center justify-center mt-5 mb-4">

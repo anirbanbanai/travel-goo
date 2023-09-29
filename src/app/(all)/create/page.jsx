@@ -1,20 +1,36 @@
 'use client'
 import Btnn from '@/components/Btnn';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 
 const img_hosting_token = process.env.NEXT_PUBLIC_ImageUploadToken;
 
 const createPage = () => {
+    const router = useRouter()
     const { register, handleSubmit } = useForm();
   
     const onSubmit = data => {
-        const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+        // const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
-        const formData = new FormData();
-        formData.append('image', data.photo[0])
-        console.log(data);
+        // const formData = new FormData();
+        // formData.append('image', data.photo[0])
+        // console.log(data);
+        axios.post("/api/travels/", data)
+        .then(data=>{
+            console.log(data);
+            Swal.fire({
+                position: 'top',
+                icon: 'success',
+                title: 'User Login successfully',
+                showConfirmButton: false,
+                timer: 1500
+            })
+            router.push("/")
+        })
         // fetch(img_hosting_url, {
         //     method: "POST",
         //     body: formData
@@ -68,7 +84,7 @@ const createPage = () => {
                         type="number" placeholder="Type here" className="input input-bordered w-full max-w-sm " />
                 </div>
                 <div className="mt-5 flex justify-center">
-                    <input {...register("image", { required: true })} type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs" />
+                    <input {...register("image")} type="file" className="file-input file-input-bordered file-input-warning w-full max-w-xs" />
                 </div>
                 <div className="flex justify-center mt-3">
                     <Btnn>Create</Btnn>
