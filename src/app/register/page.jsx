@@ -1,13 +1,18 @@
 'use client'
+import { AuthContext } from '@/components/AuthContext';
 import Btnn from '@/components/Btnn';
 import Link from 'next/link';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 
 const Register = () => {
+    const { createUser, updateUserProfile } = useContext(AuthContext);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) =>{
-        console.log(data);
+        createUser(data.email , data.password)
+        .then(data=>{
+            console.log(data);
+        })
     }
     return (
         <div>
