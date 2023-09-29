@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img from '@/assets/pic2.jpg'
 import { CiLocationOn } from 'react-icons/ci';
 import { SiReactivex } from 'react-icons/si';
@@ -11,11 +11,13 @@ import axios from 'axios';
 
 const Trending = () => {
     const [data,setData] = useState();
+   useEffect(()=>{
     axios.get("/api/travels")
     .then(data=>{
         console.log(data);
         setData(data.data)
     })
+   },[])
     return (
         <div className=' p-5 explore'>
             <h1 className='text-4xl font-bold text-start'>Trending </h1>
