@@ -29,9 +29,9 @@ const Navbar = () => {
     const NavLiks = <>
         <Link className='text-xl font-semibold hover:text-red-500' href="/">Home</Link>
         <Link className='text-xl font-semibold hover:text-red-500' href="/create">Create</Link>
-        <Link className='text-xl font-semibold hover:text-red-500' href="/">Destination</Link>
-        <Link className='text-xl font-semibold hover:text-red-500' href="/">Trending</Link>
-        <Link className='text-xl font-semibold hover:text-red-500' href="/">Testimonial</Link>
+        <Link className='text-xl font-semibold hover:text-red-500' href="/place">Place</Link>
+        <Link className='text-xl font-semibold hover:text-red-500' href="/">Booked</Link>
+        
     </>
     return (
         <div className='fixed z-10 w-full bg-slate-100 flex justify-evenly items-center p-6'>
