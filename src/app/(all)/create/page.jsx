@@ -7,48 +7,44 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 
-const img_hosting_token = process.env.NEXT_PUBLIC_ImageUploadToken;
+const img_hosting_token = process.env.NEXT_PUBLIC_img_Upload_Token;
 
 const createPage = () => {
     const router = useRouter()
     const { register, handleSubmit } = useForm();
   
     const onSubmit = data => {
-        // const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+        const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
-        // const formData = new FormData();
-        // formData.append('image', data.photo[0])
-        // console.log(data);
-        axios.post("/api/travels/", data)
-        .then(data=>{
-            console.log(data);
-            Swal.fire({
-                position: 'top',
-                icon: 'success',
-                title: 'User Login successfully',
-                showConfirmButton: false,
-                timer: 1500
+        const formData = new FormData();
+        formData.append('image', data?.image[0])
+        fetch(img_hosting_url, {
+            method: "POST",
+            body: formData
+        }).then(res => res.json())
+            .then(imgres => {
+                if (imgres.success) {
+                    const image = imgres.data.display_url;
+                    const { name, location,cost } = data;
+                    const allItem = { name, location, cost, image }
+
+                    // console.log(allItem);
+                    axios.post("/api/imgup", allItem)
+                    .then(data=>{
+                        Swal.fire({
+                            position: 'top',
+                            icon: 'success',
+                            title: 'successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                        })
+                        router.push("/")
+                    })
+                }
             })
-            router.push("/")
-        })
-        // fetch(img_hosting_url, {
-        //     method: "POST",
-        //     body: formData
-        //   }).then(res => res.json())
-        //     .then(imgres => {
-        //       if (imgres.success) {
-        //         const imgURL = imgres.data.display_url;
-        //         const { text, photo } = data;
-        //         const {photoURL,displayName,email} = user;
-        //         const menuItems = { text, imgURL,photoURL,displayName,email , date: new Date};
-        //         console.log(menuItems);
-        //         axios.post('https://my-final-server.vercel.app/post', menuItems)
-        //           .then(data => {
-        //             console.log(data.data);
-        //             swal("Post created!", "", "success");
-        //           })
-        //       }
-        //     })
+                
+
+// console.log(data);
     }
     return (
         <div>

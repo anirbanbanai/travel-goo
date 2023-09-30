@@ -3,6 +3,7 @@ const { Schema, default: mongoose } = require("mongoose");
 const travelSchema = new Schema({
     name: String,
     location: String,
+    image: String,
     cost: Number,
 },
 {

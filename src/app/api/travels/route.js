@@ -4,10 +4,10 @@ import Travel from "@/models/travel";
 import { NextResponse } from "next/server";
 
 export async function POST(request){
-    const {name,location,cost} = await request.json();
+    const {name,location,cost,image} = await request.json();
     await connectMongoDb();
-    await Travel.create({name,location,cost});
-    return NextResponse.json({name,location,cost}, {status: 200})
+    const all =  await Travel.create({name,location,cost,image});
+    return NextResponse.json(all, {status: 200})
 }
 
 export async function GET(){
