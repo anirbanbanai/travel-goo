@@ -1,4 +1,5 @@
 import Explore from '@/components/Explore';
+import HorizentalImg from '@/components/HorizentalImg';
 import MainHome from '@/components/MainHome';
 import PopularDestination from '@/components/PopularDestination';
 import Trending from '@/components/Trending';
@@ -9,7 +10,11 @@ const page = () => {
         <div>
             <MainHome />
             <Explore/>
-            <Trending/>
+           <div className='pt-10 pb-10'>
+            <h1 className='text-4xl font-bold text-center'>Trending</h1>
+           <HorizentalImg/>
+           </div>
+            {/* <Trending/> */}
             <PopularDestination/>
         </div>
     );

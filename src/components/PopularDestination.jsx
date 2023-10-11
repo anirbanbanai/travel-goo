@@ -13,7 +13,7 @@ const PopularDestination = () => {
     useEffect(()=>{
         axios.get("/api/imgup")
         .then(data=>{
-            console.log(data);
+            // console.log(data);
             setData(data.data)
         })
     },[])
@@ -24,7 +24,7 @@ const PopularDestination = () => {
 {
     data?.map(m=>(
        <div className='p-4 border' key={m._id}>
-         <Image  src={m?.image} alt='img' width={400} height={300}/>
+         <Image className='w-[400px] h-[200px]'  src={m?.image} alt='img' width={400} height={100}/>
          <p className='font-bold mt-2'>{m?.name}</p>
        </div>
     ))
