@@ -34,7 +34,7 @@ const Navbar = () => {
         
     </>
     return (
-        <div className='fixed z-10 w-full bg-slate-100 flex justify-evenly items-center p-6'>
+        <div className='fixed z-50 w-full bg-slate-100 flex justify-evenly items-center p-6'>
             <div className='flex items-center gap-2'>
                 <SiYourtraveldottv className='text-5xl text-red-500' />
                 <h2 className='text-3xl md:text-4xl font-bold'>Travel</h2>

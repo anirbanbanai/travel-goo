@@ -42,7 +42,7 @@ const MainHome = () => {
                 </SwiperSlide>
 
             </Swiper>
-            <div className='w-3/4 md:w-2/4 backdrop-blur-xl  filter  absolute top-1/3 z-50 ml-5 p-4 text-white'>
+            <div className='w-3/4 md:w-2/4 backdrop-blur-xl  filter  absolute top-1/3 z-10 ml-5 p-4 text-white'>
                 <strong className='text-white'>Explore the world</strong>
                 <h1 className='text-2xl md:text-4xl font-bold'>It is Big world out there,Go explore</h1>
                 <p className='text-sm'>
