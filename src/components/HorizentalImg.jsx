@@ -10,6 +10,7 @@ import { TbPlaceholder } from 'react-icons/tb';
 import { BsCalendar2Minus } from 'react-icons/bs';
 import { CiLocationOn } from 'react-icons/ci';
 import Btnn from './Btnn';
+import Swal from 'sweetalert2';
 
 const getItems = () =>
     Array(20)
@@ -30,6 +31,27 @@ const HorizentalImg = () => {
     }, []);
 
     const isItemSelected = (id) => !!selected.find((el) => el === id);
+
+    const handleBooked = ()=>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, booked it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Booked!',
+                'Booked',
+                'success'
+              )
+            }
+          })
+          
+    }
 
     const handleClick =
         (id) =>
